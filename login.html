@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form action="" onsubmit="login(); return false; ">
+        <input type="email" id="email">
+        <br> <br>
+        <input type="password" id="password">
+
+        <button type="submit">login</button>
+    </form>
+    <p class="message"></p>
+
+    <script>
+        function login() {
+          let email =  document.querySelector("#email").value;
+         let password =   document.querySelector("#password").value;
+
+           
+            axios.post('https://signup-form12345.herokuapp.com/login', {
+                email : email ,
+                password : password
+            })
+                .then(function (response) {
+                    console.log(response.data);
+                    document.querySelector(".message").innerHTML = response.data.message;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    document.querySelector(".message").innerHTML = error.response.data.message;
+
+                });
+        }
+    </script>
+</body>
+
+</html>

@@ -7,40 +7,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body{
+           background-color: #6D6B9F;
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border: 1px solid white;
+            width: 50%;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        input{
+            border: 0px;
+            border-bottom: 2px solid gray;
+            padding: 10px;
+        
+            
+        }
+
+        button{
+            text-align: center;
+            background-color: #6D6B9F;
+            border-radius: 3px;
+            border: #6D6B9F;
+            font-size: large;
+            font-weight: bold;
+            padding: 10px 30px ;
+            color: white;
+            
+          
+        }
+
+        span{
+            display: flex;
+            justify-content: center;
+        }
+        h1{
+            color:  #6D6B9F;
+        }
+    </style>
 
     
 </head>
 
 <body>
+
+    <div class="main">
     <h1>Signup Form</h1>
 
-
+     
     <form onsubmit="signup(); return false ">
 
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" required>
+        
+        <input type="text" id="firstName" placeholder="firstName" required>
+    
+
+        <input type="text" id="lastName" placeholder="lastName" required>
         <br> <br>
 
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" required>
+       
+        <input type="email" id="email" placeholder="email" required>
         <br> <br>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" required>
+        
+        <input type="password" id="password" placeholder="password" required>
         <br> <br>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" required>
-        <br> <br>
+        
+        <input type="password" id="repeatPassword" placeholder="confirm password" required>
+        <br> <br> <br>
 
-        <label for="repeatPassword">Repeat Password</label>
-        <input type="password" id="repeatPassword" required>
-        <br> <br>
+        <input type="checkbox" required> I agree with terms and conditions
+        <br> <br> <br>
+         
+        <span><button type="submit">signup</button></span>
 
-        <input type="submit" value="Signup">
     </form>
+    <br> <br>
+
+    <p>Already have an account? <a href="login.html">login</a></p>
 
     <p id="message"></p>
+
+    </div>
 
 
     <br>
@@ -73,10 +127,12 @@
                 .then(function (response) {
                     console.log(response.data);
                     document.querySelector("#message").innerHTML = response.data.message;
+                    alert(response.data.message)
                 })
                 .catch(function (error) {
                     console.log(error.response.data);
                     document.querySelector("#message").innerHTML = error.response.data.message;
+                    alert(error.response.data.message)
                 });
         }
 
